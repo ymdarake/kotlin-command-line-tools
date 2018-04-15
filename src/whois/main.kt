@@ -28,14 +28,11 @@ fun exists(domain: String): Boolean {
 	writer.write(domain + "\r\n\r\n")
 	writer.flush()
 
-	var exists = true
-	reader.readLines().forEach {
-		if (it.toLowerCase().contains("no match")) {
-			exists = false
-		}
+	val noMatch = reader.readLines().any{
+		it.toLowerCase().contains("no match")
 	}
 	reader.close()
 	writer.close()
 	socket.close()
-	return exists
+	return !noMatch
 }
