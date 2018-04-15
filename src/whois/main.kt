@@ -31,6 +31,7 @@ fun exists(domain: String): Boolean {
 	val noMatch = reader.readLines().any{
 		it.toLowerCase().contains("no match")
 	}
+
 	reader.close()
 	writer.close()
 	socket.close()
